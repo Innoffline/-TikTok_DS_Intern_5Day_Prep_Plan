@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TikTok DS Intern - 5 Day Extreme Prep Plan</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f0f0f; color: #e0e0e0; line-height: 1.6; }
+  .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+  h1 { text-align: center; font-size: 1.8em; margin: 20px 0 5px; color: #fff; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 30px; font-size: 0.95em; }
+  .priority-bar { display: flex; gap: 10px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap; }
+  .priority-item { padding: 6px 14px; border-radius: 20px; font-size: 0.8em; font-weight: 600; }
+  .p-critical { background: #ff4444; color: #fff; }
+  .p-high { background: #ff8800; color: #fff; }
+  .p-medium { background: #4488ff; color: #fff; }
+  .p-low { background: #555; color: #ccc; }
+  
+  .day-card { background: #1a1a1a; border-radius: 12px; margin-bottom: 20px; overflow: hidden; border: 1px solid #2a2a2a; }
+  .day-header { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  .day-header:hover { background: #222; }
+  .day-title { font-size: 1.15em; font-weight: 700; }
+  .day-tag { font-size: 0.75em; padding: 3px 10px; border-radius: 12px; font-weight: 600; }
+  .tag-sql { background: #2d5a27; color: #7cfc00; }
+  .tag-stats { background: #5a2d27; color: #fc7c7c; }
+  .tag-case { background: #27415a; color: #7cccfc; }
+  .tag-ml { background: #5a4e27; color: #fce07c; }
+  .tag-resume { background: #4a275a; color: #d47cfc; }
+  .tag-mock { background: #5a2745; color: #fc7cd4; }
+  
+  .day-body { padding: 0 20px 20px; display: none; }
+  .day-body.open { display: block; }
+  
+  .section { margin-top: 16px; }
+  .section-title { font-size: 0.95em; font-weight: 700; color: #aaa; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; border-bottom: 1px solid #333; padding-bottom: 6px; }
+  
+  .task { background: #222; border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px; }
+  .task input[type="checkbox"] { margin-top: 4px; accent-color: #4488ff; width: 16px; height: 16px; flex-shrink: 0; }
+  .task-content { flex: 1; }
+  .task-main { font-size: 0.9em; color: #ddd; }
+  .task-detail { font-size: 0.8em; color: #888; margin-top: 4px; }
+  .task-time { font-size: 0.75em; color: #666; background: #1a1a1a; padding: 2px 8px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; }
+  
+  .highlight { color: #ff8800; font-weight: 600; }
+  .critical { color: #ff4444; font-weight: 600; }
+  .link { color: #4488ff; }
+  
+  .tip-box { background: #1a2a1a; border: 1px solid #2d5a27; border-radius: 8px; padding: 12px; margin-top: 12px; font-size: 0.85em; }
+  .tip-box.warn { background: #2a1a1a; border-color: #5a2d27; }
+  
+  .overview-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.85em; }
+  .overview-table th { background: #222; padding: 10px; text-align: left; border: 1px solid #333; color: #aaa; }
+  .overview-table td { padding: 10px; border: 1px solid #333; }
+  
+  .arrow { transition: transform 0.2s; font-size: 0.8em; color: #666; }
+  .arrow.open { transform: rotate(90deg); }
+  
+  .sql-block { background: #111; border: 1px solid #333; border-radius: 6px; padding: 10px 12px; margin: 8px 0; font-family: 'Courier New', monospace; font-size: 0.82em; color: #7cfc00; overflow-x: auto; white-space: pre-wrap; }
+
+  .footer { text-align: center; color: #555; font-size: 0.8em; margin: 30px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🎯 TikTok DS Intern — 5天极限备战计划</h1>
+<p class="subtitle">Trust & Safety / Integrity 方向 ｜ 基于20+真实面经数据分析</p>
+
+<div class="priority-bar">
+  <span class="priority-item p-critical">🔴 SQL = 40%权重</span>
+  <span class="priority-item p-high">🟠 Product Case = 30%权重</span>
+  <span class="priority-item p-medium">🔵 A/B Test & Stats = 20%权重</span>
+  <span class="priority-item p-low">⚪ ML基础 = 10%权重</span>
+</div>
+
+<table class="overview-table">
+  <tr><th>Day</th><th>主题</th><th>时间分配</th><th>目标</th></tr>
+  <tr><td>Day 1</td><td>SQL基础 + Stats速记</td><td>8-10h</td><td>搞定80%的SQL题型</td></tr>
+  <tr><td>Day 2</td><td>SQL进阶 + A/B Testing</td><td>8-10h</td><td>Window Function + 实验设计</td></tr>
+  <tr><td>Day 3</td><td>Product Case + 简历准备</td><td>8-10h</td><td>掌握Case分析框架</td></tr>
+  <tr><td>Day 4</td><td>ML八股 + Trust&Safety专题</td><td>8-10h</td><td>T&S领域特定知识</td></tr>
+  <tr><td>Day 5</td><td>全真模拟 + 查漏补缺</td><td>6-8h</td><td>模拟面试 + 心态调整</td></tr>
+</table>
+
+<!-- DAY 1 -->
+<div class="day-card" id="day1">
+  <div class="day-header" onclick="toggle('day1')">
+    <div>
+      <span class="day-title">📅 Day 1 — SQL基础扫盲 + 统计速记</span>
+      <span class="day-tag tag-sql">SQL</span>
+      <span class="day-tag tag-stats">Stats</span>
+    </div>
+    <span class="arrow" id="arrow-day1">▶</span>
+  </div>
+  <div class="day-body" id="body-day1">
+    
+    <div class="section">
+      <div class="section-title">上午 (4h) — SQL核心语法复习</div>
+      
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">复习 SELECT, WHERE, GROUP BY, HAVING, ORDER BY 基础</div>
+        <div class="task-detail">重点：GROUP BY + HAVING 组合筛选，ORDER BY + LIMIT 取Top N</div>
+      </div><span class="task-time">30min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">JOIN 全类型复习：INNER / LEFT / RIGHT / SELF JOIN</div>
+        <div class="task-detail"><span class="critical">面经高频：</span>Self Join找互相关注用户对，需要用 LEAST() + GREATEST() 去重</div>
+      </div><span class="task-time">45min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">聚合函数：COUNT, SUM, AVG, COUNT(DISTINCT)</div>
+        <div class="task-detail"><span class="critical">面经高频：</span>COUNT(DISTINCT to_user_id) 统计互动过的不同用户数</div>
+      </div><span class="task-time">30min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">子查询 Subquery + CTE (WITH clause)</div>
+        <div class="task-detail">掌握嵌套子查询 vs CTE 写法，TikTok面试偏爱CTE写法（可读性强）</div>
+      </div><span class="task-time">45min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">日期函数：DATEDIFF, DATE_ADD, DATE_FORMAT, BETWEEN</div>
+        <div class="task-detail"><span class="critical">面经高频：</span>"过去30天"、"过去一个月"时间过滤几乎每场都考</div>
+      </div><span class="task-time">30min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">🔥 LeetCode SQL 刷题 (Easy 10道)</div>
+        <div class="task-detail">
+          必刷题号：<br>
+          • 175 Combine Two Tables (JOIN基础)<br>
+          • 176 Second Highest Salary (子查询)<br>
+          • 181 Employees Earning More Than Their Managers (Self Join)<br>
+          • 182 Duplicate Emails (GROUP BY + HAVING)<br>
+          • 183 Customers Who Never Order (LEFT JOIN + IS NULL)<br>
+          • 196 Delete Duplicate Emails (删除重复)<br>
+          • 197 Rising Temperature (DATEDIFF + Self Join)<br>
+          • 577 Employee Bonus (LEFT JOIN)<br>
+          • 584 Find Customer Referee (NULL处理)<br>
+          • 595 Big Countries (基础WHERE)
+        </div>
+      </div><span class="task-time">90min</span></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">下午 (4h) — SQL中等题 + 统计基础速记</div>
+      
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">🔥 LeetCode SQL Medium 刷题 (8道)</div>
+        <div class="task-detail">
+          必刷题号：<br>
+          • 177 Nth Highest Salary (DENSE_RANK / LIMIT OFFSET)<br>
+          • 178 Rank Scores (DENSE_RANK窗口函数入门)<br>
+          • 180 Consecutive Numbers (连续问题入门)<br>
+          • 184 Department Highest Salary (分组Top1 — <span class="critical">TT原题</span>)<br>
+          • 550 Game Play Analysis IV (留存率计算 — <span class="critical">TT高频</span>)<br>
+          • 570 Managers with at Least 5 Direct Reports<br>
+          • 1174 Immediate Food Delivery II<br>
+          • 1193 Monthly Transactions I (月度聚合)
+        </div>
+      </div><span class="task-time">120min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">统计学速记卡片 — 核心概念</div>
+        <div class="task-detail">
+          必背清单：<br>
+          • <span class="highlight">p-value</span>：在H0为真时，观察到当前或更极端结果的概率。p < 0.05 → 拒绝H0<br>
+          • <span class="highlight">Type I Error (α)</span>：假阳性，H0为真却拒绝 → 对应 Precision<br>
+          • <span class="highlight">Type II Error (β)</span>：假阴性，H0为假却未拒绝 → 对应 Recall<br>
+          • <span class="highlight">t-test vs z-test</span>：样本小(<30)或方差未知用t-test；大样本+方差已知用z-test<br>
+          • <span class="highlight">置信区间 CI</span>：sample mean ± Z * SE，其中 SE = σ/√n<br>
+          • <span class="highlight">Central Limit Theorem</span>：n足够大时，样本均值近似正态分布
+        </div>
+      </div><span class="task-time">60min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">Precision vs Recall 深入理解</div>
+        <div class="task-detail">
+          <span class="critical">Trust & Safety 核心考点！</span><br>
+          • Precision = TP/(TP+FP)：预测为正中实际为正的比例<br>
+          • Recall = TP/(TP+FN)：实际为正中被正确预测的比例<br>
+          • T&S场景：<br>
+          &nbsp;&nbsp;- 封禁账号：优先Precision（误封好用户代价极高）<br>
+          &nbsp;&nbsp;- 检测儿童安全风险内容：优先Recall（漏检代价极高）<br>
+          &nbsp;&nbsp;- Spam检测：通常需要平衡，但偏Precision
+        </div>
+      </div><span class="task-time">30min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">均匀分布概率题速记</div>
+        <div class="task-detail">面经原题："均匀分布平均抽样多少次比某个数大" → 几何分布期望 = 1/p</div>
+      </div><span class="task-time">20min</span></div>
+    </div>
+
+    <div class="tip-box">
+      💡 <strong>Day 1 关键检验：</strong>睡前能否不看任何资料，手写出 "找各部门薪资Top1的员工" 的完整SQL？如果不能，明天早上第一件事重做。
+    </div>
+  </div>
+</div>
+
+<!-- DAY 2 -->
+<div class="day-card" id="day2">
+  <div class="day-header" onclick="toggle('day2')">
+    <div>
+      <span class="day-title">📅 Day 2 — SQL窗口函数 + A/B Testing</span>
+      <span class="day-tag tag-sql">SQL</span>
+      <span class="day-tag tag-stats">A/B Test</span>
+    </div>
+    <span class="arrow" id="arrow-day2">▶</span>
+  </div>
+  <div class="day-body" id="body-day2">
+    
+    <div class="section">
+      <div class="section-title">上午 (4h) — 窗口函数 + SQL Hard</div>
+      
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">Window Function 系统学习</div>
+        <div class="task-detail">
+          必掌握函数：<br>
+          • ROW_NUMBER() / RANK() / DENSE_RANK() — 区别必须能秒答<br>
+          • SUM() OVER (ORDER BY ...) — 累计求和 (<span class="critical">TT面经原题：cumulative salary</span>)<br>
+          • LAG() / LEAD() — 前后行比较 (<span class="critical">TT面经：两次impression时间差</span>)<br>
+          • PARTITION BY 的使用 — 分组内排序/聚合
+        </div>
+      </div><span class="task-time">60min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">🔥 面经原题练习：TikTok Live Room SQL</div>
+        <div class="task-detail">
+          表结构：live_room (date, creator_id, room_id, country, live_type) + live_room_activity (date, room_id, watch_cnt, gift_received_cnt)<br>
+          Q1: 2022-10-01到10-07，美国地区开了>3次mobile直播的creator数<br>
+          Q2: 2022年10月，每个国家收到礼物最多的Top 5 creator (需要RANK窗口函数)<br>
+          Q3: 昨天，每场直播观看>=500的creator中，一天开了>1场直播的creator数
+        </div>
+      </div><span class="task-time">60min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">🔥 面经原题练习：follows表</div>
+        <div class="task-detail">
+          表结构：follows (from_user_id, to_user_id, follow_date)<br>
+          Q1: 过去一个月每个用户的关注数 → GROUP BY from_user_id + 时间过滤<br>
+          Q2: 找互相关注用户对 → Self Join + LEAST()/GREATEST() 去重<br>
+          Q3: 过去30天与最多不同用户互动的Top 5 → COUNT(DISTINCT to_user_id), 按唯一用户数降序，相同则按总互动数降序
+        </div>
+      </div><span class="task-time">60min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">LeetCode SQL Medium/Hard 刷题</div>
+        <div class="task-detail">
+          • 185 Department Top Three Salaries (DENSE_RANK — <span class="critical">TT高频变种</span>)<br>
+          • 601 Human Traffic of Stadium (连续3天 — <span class="critical">面经提到的Hard原题</span>)<br>
+          • 1070 Product Sales Analysis III<br>
+          • 1164 Product Price at a Given Date<br>
+          • 1321 Restaurant Growth (移动平均 — 窗口函数)<br>
+          • 连续登录天数问题 (用ROW_NUMBER()差值法)
+        </div>
+      </div><span class="task-time">90min</span></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">下午 (4h) — A/B Testing 系统复习</div>
+      
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">A/B Testing 核心概念速记</div>
+        <div class="task-detail">
+          <span class="critical">面经最高频考点之一！</span><br>
+          • <span class="highlight">A/B的本质</span>：通过随机分组建立因果关系（不是相关关系）<br>
+          • <span class="highlight">不做随机分配的后果</span>：confounding variables → selection bias → 无法归因<br>
+          • <span class="highlight">需要causal inference的场景</span>：无法随机分配时(如网速对使用率的影响)<br>
+          • <span class="highlight">MDE (Minimum Detectable Effect)</span>：最小可检测效果<br>
+          &nbsp;&nbsp;- MDE = f(α, β, n, σ²)：样本越大MDE越小<br>
+          &nbsp;&nbsp;- 100个样本分很多组 → 每组样本小 → MDE变大 → 更难检测到效果<br>
+          • <span class="highlight">几百人的小群体怎么跑实验</span>：增加实验时长、用更sensitive的指标、减少分组数
+        </div>
+      </div><span class="task-time">60min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">A/B Test 结果解读 — 面经场景题</div>
+        <div class="task-detail">
+          必须能回答的场景：<br>
+          • 实验跑了7天，核心指标没有显著变化 → 是否继续？<br>
+          &nbsp;&nbsp;答：检查power是否足够、检查novelty effect、延长实验、看secondary metrics<br>
+          • A组GMV提升但转化率下降 → 如何解读？<br>
+          &nbsp;&nbsp;答：可能客单价提高（高价商品），用户数减少但花费更多，Simpson's Paradox<br>
+          • 老用户GMV上升+新用户GMV下降 → 策略健康吗？<br>
+          &nbsp;&nbsp;答：不健康，说明获客能力下降，长期增长受限
+        </div>
+      </div><span class="task-time">60min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">Causal Inference 核心方法速记</div>
+        <div class="task-detail">
+          • <span class="highlight">DiD (Difference-in-Differences)</span>：假设条件=Parallel Trends；不满足 → 加controls或用Synthetic Control<br>
+          • <span class="highlight">Propensity Score Matching (PSM)</span>：无法做AB test时的替代方案<br>
+          • <span class="highlight">Instrumental Variable</span>：解决endogeneity<br>
+          • <span class="highlight">Inverse Probability Weighting</span>：对observational data做加权<br>
+          • <span class="highlight">Stratification + ATE</span>：加入所有confounder分层计算平均处理效应
+        </div>
+      </div><span class="task-time">45min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">Sample Size Calculation 公式速记</div>
+        <div class="task-detail">
+          n = (Z_α/2 + Z_β)² × 2σ² / δ²<br>
+          其中 δ = MDE, σ² = 方差<br>
+          chi-squared test：用于比较两组categorical variable（如conversion rate A vs B）
+        </div>
+      </div><span class="task-time">30min</span></div>
+    </div>
+
+    <div class="tip-box">
+      💡 <strong>Day 2 关键检验：</strong>能否手写出 RANK() vs DENSE_RANK() vs ROW_NUMBER() 在有并列时的区别？能否解释为什么AB test需要随机分配？
+    </div>
+  </div>
+</div>
+
+<!-- DAY 3 -->
+<div class="day-card" id="day3">
+  <div class="day-header" onclick="toggle('day3')">
+    <div>
+      <span class="day-title">📅 Day 3 — Product Case框架 + 简历准备</span>
+      <span class="day-tag tag-case">Case</span>
+      <span class="day-tag tag-resume">Resume</span>
+    </div>
+    <span class="arrow" id="arrow-day3">▶</span>
+  </div>
+  <div class="day-body" id="body-day3">
+    
+    <div class="section">
+      <div class="section-title">上午 (4h) — Product Case 分析框架</div>
+      
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">掌握"指标异动分析"万能框架 (MECE)</div>
+        <div class="task-detail">
+          <span class="critical">TikTok面试最高频Case类型！</span><br>
+          框架：Clarify → Segment → Hypothesize → Validate<br>
+          1. <span class="highlight">Clarify</span>：指标定义？下降幅度？时间范围？全局还是局部？<br>
+          2. <span class="highlight">External vs Internal</span>：<br>
+          &nbsp;&nbsp;- External：竞品动作、季节性、政策变化、节假日<br>
+          &nbsp;&nbsp;- Internal：产品改版、bug、算法更新、数据pipeline问题<br>
+          3. <span class="highlight">用户维度拆解</span>：新老用户、地区、设备、渠道<br>
+          4. <span class="highlight">漏斗拆解</span>：曝光→点击→下单→支付 每步转化率<br>
+          5. <span class="highlight">Validate</span>：数据验证假设，排除数据质量问题
+        </div>
+      </div><span class="task-time">60min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">🔥 面经原题练习：GMV连续三天下滑</div>
+        <div class="task-detail">
+          练习用框架回答：GMV = 用户数 × 转化率 × 客单价<br>
+          拆解每个因子 → 分用户群体 → 分品类 → 分地区 → 检查数据pipeline
+        </div>
+      </div><span class="task-time">30min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">🔥 面经原题练习：点击率上升但转化率下降</div>
+        <div class="task-detail">
+          可能原因：标题党/误导性推荐增加点击但用户不购买；新用户涌入（高点击低转化）；商品详情页体验变差；价格竞争力下降
+        </div>
+      </div><span class="task-time">30min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">🔥 面经原题练习：DAU下降分析</div>
+        <div class="task-detail">
+          DAU = 新增用户 + 留存用户 - 流失用户<br>
+          短期骤降 vs 长期缓降不同分析方式<br>
+          长期下降：留存率趋势、获客渠道质量、用户生命周期、竞品分流
+        </div>
+      </div><span class="task-time">30min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">Metric Design 框架学习</div>
+        <div class="task-detail">
+          面经题型：如何定义user activity / 如何衡量content quality / 如何measure bad content<br>
+          框架：<br>
+          1. 业务目标 → 2. 核心指标(North Star) → 3. 辅助指标 → 4. 护栏指标(Guardrail)<br>
+          Trust & Safety 常见指标：<br>
+          • Content removal rate, False positive rate, User report rate<br>
+          • Time to action (发现→处理时间), Appeal overturn rate<br>
+          • Bad content prevalence (坏内容在总内容中的占比)
+        </div>
+      </div><span class="task-time">60min</span></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">下午 (4h) — 简历深挖准备 + Trust & Safety Case</div>
+      
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main"><span class="critical">简历项目准备 — CayKnight.AI</span></div>
+        <div class="task-detail">
+          准备好回答：<br>
+          • 狗活动分类的feature engineering具体做了什么？为什么选RF+LR？为什么不用深度学习？<br>
+          • F1 score提升4%的具体ablation实验是怎么设计的？<br>
+          • RAG系统的evaluation怎么做的？hallucination rate怎么算的？<br>
+          • PySpark pipeline的具体架构？为什么选Parquet？S3分区策略？<br>
+          • <span class="critical">T&S角度追问</span>：如果分类模型遇到对抗样本怎么办？数据质量如何保证？
+        </div>
+      </div><span class="task-time">45min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main"><span class="critical">简历项目准备 — Helport</span></div>
+        <div class="task-detail">
+          准备好回答：<br>
+          • A/B test的具体设计？sample size怎么算的？为什么用DiD而不是简单t-test？<br>
+          • AHT降低18%的statistical significance怎么验证？p < 0.05 怎么得到的？<br>
+          • guardrail metric的escalation rate和CSAT floor具体阈值是多少？怎么定的？<br>
+          • <span class="critical">T&S角度追问</span>：如果AI给了错误建议导致客户投诉，怎么检测和防范？
+        </div>
+      </div><span class="task-time">45min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">Trust & Safety 专属Case练习</div>
+        <div class="task-detail">
+          面经原题：<br>
+          • 如何在一天内衡量TikTok上有多少bad AIGC (fake news)？<br>
+          • 如何验证TikTok推荐系统对未成年人是否存在confirmation bias？<br>
+          • 发现一种新型bad content，如何找到包含该content的其他视频？<br>
+          • 如何measure video content是good还是bad？多种bad content如何prioritize？
+        </div>
+      </div><span class="task-time">60min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">自我介绍准备 — 中英文各写一版</div>
+        <div class="task-detail">2分钟版本，重点突出：(1) DS+ML背景 (2) A/B testing经验(Helport) (3) 为什么对Trust & Safety感兴趣</div>
+      </div><span class="task-time">45min</span></div>
+    </div>
+
+    <div class="tip-box warn">
+      ⚠️ <strong>重要提醒：</strong>面经显示TikTok面试可能全程中文、全程英文、或混合。必须中英文都准备！简历上的每个数字（15%, 26%, 35%）都要能解释怎么算出来的。
+    </div>
+  </div>
+</div>
+
+<!-- DAY 4 -->
+<div class="day-card" id="day4">
+  <div class="day-header" onclick="toggle('day4')">
+    <div>
+      <span class="day-title">📅 Day 4 — ML八股 + Python + 电商/T&S业务</span>
+      <span class="day-tag tag-ml">ML</span>
+      <span class="day-tag tag-case">Business</span>
+    </div>
+    <span class="arrow" id="arrow-day4">▶</span>
+  </div>
+  <div class="day-body" id="body-day4">
+    
+    <div class="section">
+      <div class="section-title">上午 (4h) — ML基础 + Python Coding</div>
+      
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">ML八股速记 — 面经必考清单</div>
+        <div class="task-detail">
+          • <span class="highlight">Random Forest vs Boosting (XGBoost)</span>：<br>
+          &nbsp;&nbsp;RF=并行+Bagging+减少方差；XGB=串行+Boosting+减少偏差<br>
+          • <span class="highlight">树模型需要数据标准化吗？</span> 不需要（基于分裂阈值，不受scale影响）<br>
+          • <span class="highlight">Bias-Variance Tradeoff</span>：Bias=underfitting, Variance=overfitting<br>
+          • <span class="highlight">树模型超参数</span>：max_depth, n_estimators, min_samples_split, learning_rate<br>
+          • <span class="highlight">Logistic Regression</span>：二分类、sigmoid、log loss、可解释性强<br>
+          • <span class="highlight">过拟合怎么办</span>：正则化(L1/L2)、dropout、early stopping、增加数据、交叉验证
+        </div>
+      </div><span class="task-time">60min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">Type I / Type II Error 深入理解</div>
+        <div class="task-detail">
+          <span class="critical">TT面经多次出现！</span><br>
+          • Type I (FP) = 误报 = Precision问题 → 封禁了正常用户<br>
+          • Type II (FN) = 漏报 = Recall问题 → 没抓到违规账号<br>
+          • T&S场景：误封一个百万粉丝的creator (Type I) vs 漏检一个传播虚假信息的账号 (Type II)<br>
+          • 什么情况Type I更严重？什么情况Type II更严重？要能举例！
+        </div>
+      </div><span class="task-time">30min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">Python Coding 准备</div>
+        <div class="task-detail">
+          面经中Python题不算多但偶尔出现：<br>
+          • 基本数据结构操作：dict comprehension, list操作<br>
+          • 面经原题：dic = {'a': [1,2,1], 'b': [1,2,3]}，求每个key的unique数平均值<br>
+          • Pandas基础：读取、筛选、groupby、merge、apply<br>
+          • 用sql随机抽取10%的用户 → SELECT * FROM users ORDER BY RAND() LIMIT (n*0.1) 或 WHERE RAND() < 0.1
+        </div>
+      </div><span class="task-time">90min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">简单 scikit-learn 模型构建流程</div>
+        <div class="task-detail">
+          OA可能考：train_test_split → fit → predict → evaluate<br>
+          from sklearn.model_selection import train_test_split<br>
+          from sklearn.ensemble import RandomForestClassifier<br>
+          from sklearn.metrics import classification_report, f1_score
+        </div>
+      </div><span class="task-time">60min</span></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">下午 (4h) — TikTok业务理解 + 转化漏斗</div>
+      
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">TikTok Trust & Safety 业务理解</div>
+        <div class="task-detail">
+          必须了解的业务线：<br>
+          • Content Moderation：违规内容检测（暴力、色情、虚假信息、AIGC fake news）<br>
+          • Account Integrity：机器人账号、fake accounts、spam accounts<br>
+          • Ads Integrity：虚假广告、bad advertisers<br>
+          • E-commerce Safety：fraud transactions、fake reviews<br>
+          • Live Streaming Safety：直播违规行为监控<br>
+          • Minor Protection：未成年人保护、confirmation bias检测
+        </div>
+      </div><span class="task-time">60min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">电商漏斗 & 指标体系</div>
+        <div class="task-detail">
+          面经高频（偏电商组）：<br>
+          • 曝光 → 点击 → 加购 → 下单 → 支付 → 确认收货<br>
+          • GMV = 订单数 × 客单价 = UV × 转化率 × 客单价<br>
+          • 曝光点击支付转化率 = 支付订单数 / 曝光次数<br>
+          • 排除退款订单：WHERE status NOT IN ('cancelled', 'refunded')<br>
+          • ROI = Revenue / Cost → 广告ROI = 广告带来的GMV / 广告花费
+        </div>
+      </div><span class="task-time">45min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">Retention Rate 计算方法</div>
+        <div class="task-detail">
+          面经原题：advertiser连续两日刊登广告的比例<br>
+          思路：Self Join on advertiser_id WHERE DATEDIFF(b.date, a.date) = 1<br>
+          Retention = COUNT(DISTINCT 次日活跃) / COUNT(DISTINCT 当日活跃)<br>
+          <br>
+          面经另一题：HAU比DAU更活跃？是sampling error吗？<br>
+          答：不是sampling error。HAU按小时统计，活跃用户可能集中在某几个小时（高峰期），所以单个小时的活跃率看起来比全天的高。这是aggregation paradox。
+        </div>
+      </div><span class="task-time">45min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">Behavior Question 准备 (2-3个故事)</div>
+        <div class="task-detail">
+          用STAR框架准备：<br>
+          • Most proud project → 选Helport A/B testing (最relevant)<br>
+          • 遇到conflict怎么办 → 工作中与PM/工程师的分歧<br>
+          • 遇到挑战怎么办 → CayKnight数据质量问题的解决
+        </div>
+      </div><span class="task-time">45min</span></div>
+    </div>
+
+    <div class="tip-box">
+      💡 <strong>Day 4 关键检验：</strong>能否在2分钟内清晰解释 "如果TikTok上突然出现大量fraud content，你会怎么做？" 包括检测方法、指标设计、和优先级排序。
+    </div>
+  </div>
+</div>
+
+<!-- DAY 5 -->
+<div class="day-card" id="day5">
+  <div class="day-header" onclick="toggle('day5')">
+    <div>
+      <span class="day-title">📅 Day 5 — 全真模拟 + 查漏补缺</span>
+      <span class="day-tag tag-mock">Mock</span>
+      <span class="day-tag tag-sql">SQL</span>
+      <span class="day-tag tag-case">Case</span>
+    </div>
+    <span class="arrow" id="arrow-day5">▶</span>
+  </div>
+  <div class="day-body" id="body-day5">
+    
+    <div class="section">
+      <div class="section-title">上午 (3h) — 全真模拟面试</div>
+      
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">模拟面试 Round 1 (45min)</div>
+        <div class="task-detail">
+          严格按面试流程：<br>
+          1. 自我介绍 (2min)<br>
+          2. 项目深挖 (15min) — 不看简历，流畅讲述<br>
+          3. SQL题 (15min) — 在白板/记事本上手写，不运行<br>
+          4. Case Question (10min) — 计时回答<br>
+          5. 反问 (3min)
+        </div>
+      </div><span class="task-time">60min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">模拟面试 Round 2 (45min)</div>
+        <div class="task-detail">
+          换一套题目再来一次，重点练习：<br>
+          • 英文自我介绍和项目讲解<br>
+          • 在面试官不给反馈时也能流畅推进（面经提到面试官经常不回应）<br>
+          • 出声说思路（Think Aloud）— SQL写之前先说思路
+        </div>
+      </div><span class="task-time">60min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">来找我做Mock Interview</div>
+        <div class="task-detail"><span class="critical">直接回到对话，告诉我"开始mock interview"，我会一题一题考你并严格打分。</span></div>
+      </div><span class="task-time">60min</span></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">下午 (3-4h) — 查漏补缺</div>
+      
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">回顾所有标记"不确定"的知识点</div>
+        <div class="task-detail">过去4天遇到的任何卡壳的点，今天必须解决</div>
+      </div><span class="task-time">60min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">SQL 速写练习 — 限时15分钟3题</div>
+        <div class="task-detail">不看任何参考，手写3道medium SQL，训练速度和准确率</div>
+      </div><span class="task-time">45min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">Case框架最后背诵</div>
+        <div class="task-detail">
+          确保以下场景能在2分钟内给出结构化回答：<br>
+          • 指标下降分析（GMV/DAU/转化率）<br>
+          • 实验设计（选指标、选样本、定时长）<br>
+          • Bad content检测（模型选择、指标评估、优先级）
+        </div>
+      </div><span class="task-time">30min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">准备反问环节的问题 (3-5个)</div>
+        <div class="task-detail">
+          好的反问示例：<br>
+          • What does a typical day look like for a DS intern on the Integrity team?<br>
+          • What are the biggest challenges the team is currently facing in content moderation?<br>
+          • How does the team balance between model precision and user experience?<br>
+          • What tools/tech stack does the team primarily use?
+        </div>
+      </div><span class="task-time">15min</span></div>
+
+      <div class="task"><input type="checkbox"><div class="task-content">
+        <div class="task-main">面试前Checklist</div>
+        <div class="task-detail">
+          □ 网络稳定、摄像头清晰、背景整洁<br>
+          □ 准备纸笔用于SQL草稿<br>
+          □ HackerRank环境提前测试<br>
+          □ 准备一杯水<br>
+          □ 提前5分钟进入面试链接
+        </div>
+      </div><span class="task-time">15min</span></div>
+    </div>
+
+    <div class="tip-box warn">
+      ⚠️ <strong>面试日心态：</strong>面经显示面试官有时不开摄像头、不给反馈、甚至态度冷淡 — 这是正常的！不要因为面试官的态度影响发挥。专注于清晰表达你的思路。
+    </div>
+  </div>
+</div>
+
+<!-- CHEATSHEET -->
+<div class="day-card" id="cheat">
+  <div class="day-header" onclick="toggle('cheat')">
+    <div>
+      <span class="day-title">📋 速查表 — SQL模板 & 概念卡片</span>
+      <span class="day-tag tag-sql">SQL</span>
+      <span class="day-tag tag-stats">Stats</span>
+    </div>
+    <span class="arrow" id="arrow-cheat">▶</span>
+  </div>
+  <div class="day-body" id="body-cheat">
+    
+    <div class="section">
+      <div class="section-title">SQL 万能模板</div>
+
+      <p style="color:#aaa;font-size:0.85em;margin:8px 0;">1. 分组Top N (面经超高频)</p>
+      <div class="sql-block">WITH ranked AS (
+  SELECT *,
+    RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) as rk
+  FROM employees
+)
+SELECT * FROM ranked WHERE rk <= N;</div>
+
+      <p style="color:#aaa;font-size:0.85em;margin:8px 0;">2. 互相关注用户对 (面经原题)</p>
+      <div class="sql-block">SELECT DISTINCT
+  LEAST(a.from_user_id, a.to_user_id) AS user1,
+  GREATEST(a.from_user_id, a.to_user_id) AS user2
+FROM follows a
+INNER JOIN follows b
+  ON a.from_user_id = b.to_user_id
+  AND a.to_user_id = b.from_user_id;</div>
+
+      <p style="color:#aaa;font-size:0.85em;margin:8px 0;">3. 过去30天Top 5互动用户 (面经原题)</p>
+      <div class="sql-block">SELECT from_user_id,
+  COUNT(DISTINCT to_user_id) AS unique_interactions,
+  COUNT(*) AS total_interactions
+FROM interactions
+WHERE action_date >= CURRENT_DATE - INTERVAL 30 DAY
+GROUP BY from_user_id
+ORDER BY unique_interactions DESC, total_interactions DESC
+LIMIT 5;</div>
+
+      <p style="color:#aaa;font-size:0.85em;margin:8px 0;">4. 连续N天登录 (差值法)</p>
+      <div class="sql-block">WITH numbered AS (
+  SELECT user_id, login_date,
+    ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY login_date) AS rn
+  FROM (SELECT DISTINCT user_id, login_date FROM logins)
+)
+SELECT user_id, 
+  DATE_SUB(login_date, INTERVAL rn DAY) AS grp,
+  COUNT(*) AS consecutive_days
+FROM numbered
+GROUP BY user_id, grp
+HAVING COUNT(*) >= N;</div>
+
+      <p style="color:#aaa;font-size:0.85em;margin:8px 0;">5. 留存率计算 (面经原题)</p>
+      <div class="sql-block">SELECT a.date,
+  COUNT(DISTINCT b.advertiser_id) * 1.0 / 
+  COUNT(DISTINCT a.advertiser_id) AS retention_rate
+FROM ads a
+LEFT JOIN ads b
+  ON a.advertiser_id = b.advertiser_id
+  AND b.date = DATE_ADD(a.date, INTERVAL 1 DAY)
+GROUP BY a.date;</div>
+
+      <p style="color:#aaa;font-size:0.85em;margin:8px 0;">6. 转化率计算 (电商漏斗)</p>
+      <div class="sql-block">SELECT DATE(i.date) AS dt,
+  COUNT(DISTINCT i.product_id) AS impressions,
+  COUNT(DISTINCT c.product_id) AS clicks,
+  COUNT(DISTINCT o.order_id) AS orders,
+  COUNT(DISTINCT o.order_id) * 1.0 / NULLIF(COUNT(DISTINCT i.product_id), 0) AS conversion_rate
+FROM impressions i
+LEFT JOIN clicks c ON i.product_id = c.product_id AND i.date = c.date
+LEFT JOIN orders o ON c.product_id = o.product_id AND c.date = o.date
+  AND o.status = 'paid'
+GROUP BY DATE(i.date);</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Window Function 区别速记</div>
+      <table class="overview-table">
+        <tr><th>数据</th><th>ROW_NUMBER</th><th>RANK</th><th>DENSE_RANK</th></tr>
+        <tr><td>100</td><td>1</td><td>1</td><td>1</td></tr>
+        <tr><td>100</td><td>2</td><td>1</td><td>1</td></tr>
+        <tr><td>90</td><td>3</td><td>3</td><td>2</td></tr>
+        <tr><td>80</td><td>4</td><td>4</td><td>3</td></tr>
+      </table>
+      <p style="color:#888;font-size:0.82em;">ROW_NUMBER: 永远不重复 | RANK: 并列跳号 | DENSE_RANK: 并列不跳号</p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">T&S 核心指标速记</div>
+      <table class="overview-table">
+        <tr><th>指标</th><th>定义</th><th>为什么重要</th></tr>
+        <tr><td>Bad Content Prevalence</td><td>坏内容/总内容</td><td>衡量平台整体安全程度</td></tr>
+        <tr><td>Precision (moderation)</td><td>被标记中确实违规的比例</td><td>避免误封</td></tr>
+        <tr><td>Recall (moderation)</td><td>违规内容中被检出的比例</td><td>避免漏检</td></tr>
+        <tr><td>Time to Action</td><td>从发布到被处理的时间</td><td>衡量响应速度</td></tr>
+        <tr><td>Appeal Overturn Rate</td><td>申诉成功率</td><td>衡量误判程度</td></tr>
+        <tr><td>User Report Rate</td><td>用户举报率</td><td>用户感知的安全程度</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  基于20+篇TikTok DS面经分析生成 | 针对 Inno Li 定制 | 2026年3月
+</div>
+
+</div>
+
+<script>
+function toggle(id) {
+  const body = document.getElementById('body-' + id);
+  const arrow = document.getElementById('arrow-' + id);
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+// Open Day 1 by default
+toggle('day1');
+</script>
+</body>
+</html>
